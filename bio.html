@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo Rohde - Biography</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+            <a href="index.html" class="artist-name-link">LEONARDO ROHDE</a>
+            <div class="menu-container">
+            
+            <button id="mode-toggle" aria-label="Toggle Day/Night Mode">
+                <i class="fas fa-sun"></i> 
+            </button>
+
+            <button id="burger-icon" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="main-menu">
+                <ul>
+                    <li><a href="index.html">HOME</a></li> <li> 
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="bio-page">
+        <section class="bio-content-wrapper">
+            
+<!--
+            <button id="back-button" class="back-link" aria-label="Go back to the previous page">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+-->
+
+            <h1 class="bio-title">
+                LEONARDO ROHDE
+            </h1>
+            
+            <div class="bio-text">
+                <p>
+                    Leo is game designer with a background and experience in animation and graphic desigh. He is pursuing a Bachelor of Science Degree in Game Design and Development at the State University of New York (SUNY) in Canton, where he is in the President's List. He also holds an Associate of Science Degree in Animation and Motion Graphics from the Borough of Manhattan Community College (BMCC), where he was a member of the Phi Theta Kappa Honor Society. He has interned at <a href="https://www.plotkids.com/">Plot Kids</a>, a maker of family-friendly games and animations; and at <a href="https://www.youtube.com/user/animaking">AnimaKing</a>, an animation production company; both based in Florianópolis, Brazil.  
+                </p>
+                <p> 
+                    <a href="portfolio.html">View Leo's portfolio here.</a>
+                </p>
+            </div>
+
+            <h2 class="gallery-heading">
+                Leo at work
+            </h2>
+
+            <div class="bio-gallery">
+                <div class="gallery-item">
+                    <img src="work-1.png" alt="Leo at his desk">
+                </div>          
+                <div class="gallery-item">
+                    <img src="work-2.png" alt="Leo at his desk">
+                </div>
+                <div class="gallery-item">
+                    <img src="work-3.png" alt="Leo engaging in film photography">
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div class="social-links-container">
+        <a href="https://www.youtube.com/@leonardorohde9811" target="_blank" aria-label="YouTube Channel">
+            <i class="fab fa-youtube"></i>
+        </a>
+<!--
+        <a href="YOUR_LINKEDIN_URL" target="_blank" aria-label="LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Instagram Page">
+            <i class="fab fa-instagram"></i>
+        </a>
+-->
+    </div>
+
+
+    <script>
+        const menu = document.getElementById('main-menu');
+        const burgerIcon = document.getElementById('burger-icon');
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+//        const backButton = document.getElementById('back-button');
+
+        // --- NEW/UPDATED MODE LOGIC STARTS HERE ---
+        
+        // Function to update the icon appearance
+        function updateModeIcon(isNight) {
+            const icon = modeToggle.querySelector('i');
+            icon.classList.remove('fa-sun', 'fa-moon');
+            if (isNight) {
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.add('fa-sun');
+            }
+        }
+
+        // 1. CHECK LOCAL STORAGE ON LOAD
+        const savedMode = localStorage.getItem('mode');
+        if (savedMode === 'night') {
+            body.classList.add('night-mode');
+            updateModeIcon(true);
+        } else {
+            // Ensure day mode icon is set if nothing is saved or if it's set to 'day'
+            updateModeIcon(false);
+        }
+
+        // 2. TOGGLE LOGIC (Save to Local Storage)
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('night-mode');
+            const isNight = body.classList.contains('night-mode');
+
+            // Save the new state to the browser's local storage
+            if (isNight) {
+                localStorage.setItem('mode', 'night');
+            } else {
+                localStorage.setItem('mode', 'day');
+            }
+
+            updateModeIcon(isNight);
+        });
+
+        // --- NEW/UPDATED MODE LOGIC ENDS HERE ---
+        
+        // 3. Menu Toggle Logic (Existing—Keep this here)
+        burgerIcon.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            burgerIcon.querySelector('i').classList.toggle('fa-bars');
+            burgerIcon.querySelector('i').classList.toggle('fa-times');
+        });
+
+//        // 4. NEW: Back Button Logic
+//        if (backButton) {
+//            backButton.addEventListener('click', () => {
+//                // history.back() navigates to the previous page in the browser's history
+//                window.history.back(); 
+//            });
+//        }
+    </script>
+</body>
+
+</html>
+

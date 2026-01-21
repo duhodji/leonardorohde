@@ -3,61 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leonardo Rohde - Coming Soon</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Montserrat Font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* Apply Montserrat to all body elements */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent scrolling if content slightly exceeds viewport */
-        }
-        /* Custom class for the background image */
-        .background-image-container {
-            /* Using a high-quality, dark abstract background image */
-            background-image: url('sand.jpeg');
-            background-size: cover; /* Ensures the image covers the entire container without distorting */
-            background-position: center; /* Centers the image */
-            background-attachment: fixed; /* Optional: Makes the background fixed relative to the viewport */
-        }
-    </style>
+    <title>Leonardo Rohde - Official Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body class="bg-black">
+<body>
 
-    <!-- 
-        BACKGROUND SECTION: Full screen container with the image and a dark overlay
-        The overlay improves contrast for the white text.
-    -->
-    <div class="background-image-container fixed inset-0">
-        <!-- Dark overlay for contrast -->
-        <div class="absolute inset-0 bg-black opacity-40"></div>
+    <header>
+        <div></div> 
+
+        <div class="menu-container"> 
+            
+            <button id="mode-toggle" aria-label="Toggle Day/Night Mode">
+                <i class="fas fa-sun"></i> 
+            </button>
+
+            <button id="burger-icon" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="main-menu">
+                <ul>
+                    <li><a href="bio.html">BIO</a></li>
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="bio.html" class="home-link-wrapper">
+        <div class="artist-center-content">
+            <div class="artist-photo-container">
+                <img src="profile.png" alt="Photo of Leonardo" class="artist-photo">
+            </div>
+
+            <h1 class="artist-name">
+                LEONARDO ROHDE
+            </h1>
+            <h2 class="artist-sub-title">
+                Game Designer
+            </h2>
+        </div>
+        </a>
+    </main>
+    <div class="social-links-container">
+        <a href="https://www.youtube.com/@leonardorohde9811" target="_blank" aria-label="YouTube Channel">
+            <i class="fab fa-youtube"></i>
+        </a>
+<!--
+        <a href="YOUR_LINKEDIN_URL" target="_blank" aria-label="LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="YOUR_INSTAGRAM_URL" target="_blank" aria-label="Instagram Page">
+            <i class="fab fa-instagram"></i>
+        </a>
+-->
     </div>
 
-    <!-- 
-        CONTENT SECTION: Full screen container to center the main text
-        We use flexbox to center the content both horizontally (items-center) and vertically (justify-center).
-        We use 'relative' to make 'Coming Soon' absolute positioning relative to this parent.
-    -->
-    <div class="relative h-screen w-screen flex flex-col justify-center items-center p-4">
+<script>
+        // Existing components (keep these at the top)
+        const menu = document.getElementById('main-menu');
+        const burgerIcon = document.getElementById('burger-icon');
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
         
-        <!-- PRIMARY TEXT: Artist Name (Changed from font-extrabold to font-bold) -->
-        <h1 class="text-white text-6xl md:text-8xl font-bold tracking-widest text-center 
-                   shadow-2xl z-10 select-none">
-            Leonardo Rohde
-        </h1>
+        // --- NEW/UPDATED MODE LOGIC STARTS HERE ---
+        
+        // Function to update the icon appearance
+        function updateModeIcon(isNight) {
+            const icon = modeToggle.querySelector('i');
+            icon.classList.remove('fa-sun', 'fa-moon');
+            if (isNight) {
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.add('fa-sun');
+            }
+        }
 
-        <!-- SECONDARY TEXT: Coming Soon (Mixed case) 
-             We position this absolutely at the bottom center of the viewport (relative to the content container)
-        -->
-        <p class="absolute bottom-10 text-white text-lg md:text-2xl font-light tracking-widest 
-                  opacity-80 z-10 select-none">
-            Coming Soon
-        </p>
-    </div>
+        // 1. CHECK LOCAL STORAGE ON LOAD
+        const savedMode = localStorage.getItem('mode');
+        if (savedMode === 'night') {
+            body.classList.add('night-mode');
+            updateModeIcon(true);
+        } else {
+            // Ensure day mode icon is set if nothing is saved or if it's set to 'day'
+            updateModeIcon(false);
+        }
 
+        // 2. TOGGLE LOGIC (Save to Local Storage)
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('night-mode');
+            const isNight = body.classList.contains('night-mode');
+
+            // Save the new state to the browser's local storage
+            if (isNight) {
+                localStorage.setItem('mode', 'night');
+            } else {
+                localStorage.setItem('mode', 'day');
+            }
+
+            updateModeIcon(isNight);
+        });
+
+        // --- NEW/UPDATED MODE LOGIC ENDS HERE ---
+        
+        // 3. Menu Toggle Logic (Existing—Keep this here)
+        burgerIcon.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            burgerIcon.querySelector('i').classList.toggle('fa-bars');
+            burgerIcon.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // 4. (For Bio/Portfolio only) Back Button Logic
+        // ... include back button logic here if needed ...
+        
+        // 5. (For Portfolio only) Slider Logic
+        // ... include slider logic here if needed ...
+        
+    </script>
 </body>
 </html>
