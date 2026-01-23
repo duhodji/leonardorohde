@@ -358,17 +358,6 @@ button:hover {
     overflow: hidden;
     border: 1px solid var(--photo-border-color);
 }
-.project-video {
-    flex: 1 1 50%;
-    max-width: 50%;
-    aspect-ratio: 16 / 9; /* The video will grow/shrink perfectly */
-    border: 1px solid var(--photo-border-color);
-}
-
-.project-video iframe {
-    width: 100%;
-}
-
 @media (max-width: 800px) {
     .project-image {
         max-width: 100%; 
@@ -712,8 +701,3 @@ button:hover {
     color: var(--accent-color); /* Use the accent color for a pop */
     transform: translateY(-3px); /* Subtle lift effect */
 }
-
-
-
-
-
