@@ -358,6 +358,11 @@ button:hover {
     overflow: hidden;
     border: 1px solid var(--photo-border-color);
 }
+.project-image iframe {
+    width: 100%;
+    height: 100%;
+    display: block; /* Removes any tiny bottom gaps */
+}
 @media (max-width: 800px) {
     .project-image {
         max-width: 100%; 
@@ -701,4 +706,5 @@ button:hover {
     color: var(--accent-color); /* Use the accent color for a pop */
     transform: translateY(-3px); /* Subtle lift effect */
 }
+
 
