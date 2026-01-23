@@ -360,7 +360,6 @@ button:hover {
 }
 .project-video {
     flex: 1 1 50%;
-    max-width: 50%;
     aspect-ratio: 16 / 9; /* The video will grow/shrink perfectly */
     border: 1px solid var(--photo-border-color);
 }
@@ -713,6 +712,7 @@ button:hover {
     color: var(--accent-color); /* Use the accent color for a pop */
     transform: translateY(-3px); /* Subtle lift effect */
 }
+
 
 
 
