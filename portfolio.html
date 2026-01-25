@@ -10,8 +10,8 @@
 <body>
 
     <header>
-        <a href="index.html" class="artist-name-link">LEONARDO ROHDE</a> 
-        <div class="menu-container"> 
+            <a href="index.html" class="artist-name-link">LEONARDO ROHDE</a>
+            <div class="menu-container">
             
             <button id="mode-toggle" aria-label="Toggle Day/Night Mode">
                 <i class="fas fa-sun"></i> 
@@ -23,8 +23,8 @@
 
             <nav id="main-menu">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="bio.html">BIO</a></li> 
+                    <li><a href="index.html">HOME</a></li> <li> 
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                 </ul>
             </nav>
@@ -33,19 +33,19 @@
 
     <main class="portfolio-page">
         <section class="portfolio-content-wrapper">
-
+            
 <!--
             <button id="back-button" class="back-link" aria-label="Go back to the previous page">
                 <i class="fas fa-arrow-left"></i> Back
             </button>
 -->
-            
+
             <h1 class="portfolio-title">
                 SELECTED WORKS
             </h1>
-
+            
             <h2 class="project-heading">Demo Reel | <a href="animations.html">Animations</a> | <a href="illustrations.html">Illustrations</a> | <a href="games.html">Games</a></h2><br>
-
+            
                 <iframe 
                     width="560" 
                     height="315" 
@@ -57,17 +57,16 @@
                     allowfullscreen
                     align="center">
                 </iframe>
+
+
         </section>
-
-
     </main>
 
     <div class="social-links-container">
         <a href="https://www.youtube.com/@leonardorohde9811" target="_blank" aria-label="YouTube Channel">
             <i class="fab fa-youtube"></i>
         </a>
-
-<!--        
+<!--
         <a href="YOUR_LINKEDIN_URL" target="_blank" aria-label="LinkedIn Profile">
             <i class="fab fa-linkedin-in"></i>
         </a>
@@ -75,62 +74,17 @@
             <i class="fab fa-instagram"></i>
         </a>
 -->
-        
     </div>
 
+
     <script>
-        // Existing components
         const menu = document.getElementById('main-menu');
         const burgerIcon = document.getElementById('burger-icon');
         const modeToggle = document.getElementById('mode-toggle');
         const body = document.body;
-
-//        // NEW: Back Button Selector
 //        const backButton = document.getElementById('back-button');
-        
-        // NEW SLIDER COMPONENTS
-        const track = document.getElementById('slider-track');
-        const slides = document.querySelectorAll('.project-slide');
-        const prevButton = document.getElementById('prev-slide');
-        const nextButton = document.getElementById('next-slide');
-        let currentSlide = 0;
-        const totalSlides = slides.length;
 
-        // SLIDER LOGIC
-        function updateSlider() {
-            const slideWidth = slides[0].clientWidth;
-            // The magic: move the track horizontally by the width of one slide multiplied by the current index.
-            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-            
-            // Disable buttons at the start/end
-            prevButton.disabled = currentSlide === 0;
-            nextButton.disabled = currentSlide === totalSlides - 1;
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateSlider();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateSlider();
-            }
-        }
-
-        // Event Listeners for the Slider
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
-        
-        // Update slider on load and resize
-        window.addEventListener('resize', updateSlider);
-        window.addEventListener('load', updateSlider);
-
-
-// --- NEW/UPDATED MODE LOGIC STARTS HERE ---
+        // --- NEW/UPDATED MODE LOGIC STARTS HERE ---
         
         // Function to update the icon appearance
         function updateModeIcon(isNight) {
@@ -175,20 +129,20 @@
             menu.classList.toggle('active');
             burgerIcon.querySelector('i').classList.toggle('fa-bars');
             burgerIcon.querySelector('i').classList.toggle('fa-times');
-        })
+        });
 
 //        // 4. NEW: Back Button Logic
 //        if (backButton) {
 //            backButton.addEventListener('click', () => {
 //                // history.back() navigates to the previous page in the browser's history
-//               window.history.back(); 
+//                window.history.back(); 
 //            });
 //        }
     </script>
 </body>
-</html>
-
-</body>
 
 </html>
+
+
+
 
