@@ -357,6 +357,9 @@ button:hover {
     height: 500px; /* Fixed height for consistency */
     overflow: hidden;
     border: 1px solid var(--photo-border-color);
+    display: flex;           /* Enables flex behavior inside the box */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;     /* Centers content vertically */
 }
 @media (max-width: 800px) {
     .project-image {
