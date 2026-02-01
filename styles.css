@@ -354,14 +354,14 @@ button:hover {
 .project-image {
     flex: 1 1 50%; /* Image takes 50% of the space */
     max-width: 50%; 
-    height: 500px; /* Fixed height for consistency */
+    height: 315px; /* Fixed height for consistency */
     overflow: hidden;
     border: 1px solid var(--photo-border-color);
 }
 @media (max-width: 800px) {
     .project-image {
         max-width: 100%; 
-        height: auto;
+        height: 315px; /*auto;*/
     }
 }
 
@@ -701,3 +701,4 @@ button:hover {
     color: var(--accent-color); /* Use the accent color for a pop */
     transform: translateY(-3px); /* Subtle lift effect */
 }
+
