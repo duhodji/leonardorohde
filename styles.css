@@ -354,20 +354,20 @@ button:hover {
 .project-image {
     flex: 1 1 50%; /* Image takes 50% of the space */
     max-width: 50%; 
-    aspect-ratio: 16 / 9 /*height: 315px; */
+    aspect-ratio: 16 / 9; /*height: 315px; */
     overflow: hidden;
     border: 1px solid var(--photo-border-color);
 }
 @media (max-width: 800px) {
     .project-image {
         max-width: 100%; 
-        aspect-ratio: 16 / 9 /*height: auto; */
+        aspect-ratio: 16 / 9; /*height: auto; */
     }
 }
 
 .project-image img {
     width: 100%;
-    aspect-ratio: 16 / 9 /*height: 100%;*/
+    aspect-ratio: 16 / 9; /*height: 100%;*/
     object-fit: cover; /* Ensures image covers the area */
     display: block;
 }
@@ -719,6 +719,7 @@ button:hover {
     color: var(--accent-color); /* Use the accent color for a pop */
     transform: translateY(-3px); /* Subtle lift effect */
 }
+
 
 
 
